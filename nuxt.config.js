@@ -1,6 +1,5 @@
 const pkg = require('./package')
 
-
 module.exports = {
   mode: 'spa',
 
@@ -14,9 +13,7 @@ module.exports = {
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: pkg.description }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
   /*
@@ -27,16 +24,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: [
-    'ant-design-vue/dist/antd.css'
-  ],
+  css: ['ant-design-vue/dist/antd.css'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    '@/plugins/antd-ui'
-  ],
+  plugins: ['@/plugins/antd-ui'],
 
   /*
   ** Nuxt.js modules
@@ -50,6 +43,15 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy: false
+  },
+
+  proxy: {
+    '/api': {
+      target: 'http://10.0.1.51:9909',
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' }
+    }
   },
 
   /*
