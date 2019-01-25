@@ -1,27 +1,23 @@
 <template>
-  <section class="container">
-    <div>
-      <h1 class="title">
-        frontend-template-vue
-      </h1>
-      <h2 class="subtitle">
-        frontend template project by nuxt
-      </h2>
-    </div>
-  </section>
+  <div>
+    CONTENT
+  </div>
 </template>
 
-<script>
-export default {}
-</script>
-
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
+div {
   display: flex;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  text-align: center;
+  font-size: 30px;
+}
+
+/*test*/
+button {
+  height: 40px;
+  position: fixed;
+  right: 0;
+  top: 45%;
 }
 </style>

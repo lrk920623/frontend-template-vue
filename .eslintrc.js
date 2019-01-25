@@ -7,16 +7,13 @@ module.exports = {
   parserOptions: {
     parser: 'babel-eslint'
   },
-  extends: [
-    '@nuxtjs',
-    'plugin:prettier/recommended'
-  ],
-  plugins: [
-    'prettier'
-  ],
+  extends: ['plugin:vue/recommended', 'plugin:prettier/recommended'],
+  plugins: ['vue', 'prettier'],
   // add your custom rules here
   rules: {
-    'vue/no-parsing-error': [2, { 'x-invalid-end-tag': false }],
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'vue/no-parsing-error': ['error', { 'x-invalid-end-tag': false }],
     'vue/html-self-closing': [
       'error',
       {
@@ -27,6 +24,22 @@ module.exports = {
         },
         svg: 'always',
         math: 'always'
+      }
+    ],
+    'vue/html-closing-bracket-newline': [
+      'error',
+      {
+        multiline: 'never'
+      }
+    ],
+    'vue/max-attributes-per-line': [
+      'error',
+      {
+        singleline: 1,
+        multiline: {
+          max: 1,
+          allowFirstLine: false
+        }
       }
     ]
   }

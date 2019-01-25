@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const webpack = require('webpack')
 
 module.exports = {
   mode: 'spa',
@@ -16,6 +17,10 @@ module.exports = {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
+  router: {
+    middleware: 'route'
+  },
+
   /*
   ** Customize the progress-bar color
   */
@@ -24,12 +29,12 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['ant-design-vue/dist/antd.css'],
+  css: ['ant-design-vue/dist/antd.css', 'assets/style/main.less'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/antd-ui'],
+  plugins: ['@/plugins/antd-ui', '@/plugins/axios'],
 
   /*
   ** Nuxt.js modules
@@ -58,18 +63,43 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    analyze: true,
+
+    babel: {
+      plugins: [
+        [
+          'import',
+          {
+            libraryName: 'ant-design-vue',
+            libraryDirectory: 'es',
+            style: true
+          }
+        ],
+        '@babel/plugin-transform-runtime',
+        'lodash'
+      ]
+    },
+
+    plugins: [
+      new webpack.ProvidePlugin({
+        _: 'lodash'
+      })
+    ],
+
     /*
     ** You can extend webpack config here
     */
     extend(config, ctx) {
       // Run ESLint on save
-      if (ctx.isDev && ctx.isClient) {
+      if (ctx.isDev) {
         config.module.rules.push({
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
           exclude: /(node_modules)/
         })
+
+        config.devtool = 'cheap-module-inline-source-map'
       }
     }
   }

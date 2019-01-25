@@ -3,9 +3,7 @@
     <v-sider>
       <v-logo></v-logo>
     </v-sider>
-    <a-layout
-      class="layout-right-box"
-      :style="{ paddingLeft: siderWidth }">
+    <a-layout style="min-height: 100vh">
       <v-header></v-header>
       <a-layout-content>
         <nuxt></nuxt>
@@ -18,12 +16,10 @@
 </template>
 
 <script>
-import { style } from '../utils/constant'
 import VHeader from '../components/layout/Header'
 import VSider from '../components/layout/Sider'
 import VLogo from '../components/basic/Logo'
 import VPageFooter from '../components/page/PageFooter'
-import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -31,14 +27,6 @@ export default {
     VHeader,
     VSider,
     VLogo
-  },
-
-  computed: {
-    ...mapState(['menuCollapsed']),
-
-    siderWidth() {
-      return this.menuCollapsed ? style.siderWidthShrink : style.siderWidth
-    }
   }
 }
 </script>
@@ -58,11 +46,6 @@ body {
 }
 
 .vo-container {
-  .layout-right-box {
-    min-height: 100vh;
-    transition: all 0.2s;
-  }
-
   .ant-layout-content {
     margin: 24px 24px 0;
     height: 100%;
@@ -73,7 +56,6 @@ body {
     }
   }
 
-  .ant-layout-header,
   .ant-layout-footer {
     padding: 0;
   }
