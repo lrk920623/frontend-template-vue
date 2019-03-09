@@ -12,15 +12,24 @@ import {
   Badge,
   Input,
   Table,
+  Radio,
+  Modal,
+  Avatar,
   Layout,
   Select,
   Button,
+  Divider,
   Popover,
   Checkbox,
   Dropdown,
   DatePicker,
-  InputNumber
-} from 'ant-design-vue/lib'
+  Breadcrumb,
+  Pagination,
+  Popconfirm,
+  InputNumber,
+  AutoComplete,
+  LocaleProvider
+} from 'ant-design-vue'
 
 export default () => {
   Vue.use(Col)
@@ -35,12 +44,21 @@ export default () => {
   Vue.use(Badge)
   Vue.use(Input)
   Vue.use(Table)
+  Vue.use(Radio)
+  Vue.use(Modal)
+  Vue.use(Avatar)
   Vue.use(Layout)
   Vue.use(Select)
   Vue.use(Button)
+  Vue.use(Divider)
   Vue.use(Popover)
   Vue.use(Checkbox)
   Vue.use(Dropdown)
   Vue.use(DatePicker)
+  Vue.use(Breadcrumb)
+  Vue.use(Pagination)
+  Vue.use(Popconfirm)
   Vue.use(InputNumber)
+  Vue.use(AutoComplete)
+  Vue.use(LocaleProvider)
 }

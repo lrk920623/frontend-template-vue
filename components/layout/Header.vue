@@ -1,19 +1,19 @@
 <template>
   <a-layout-header class="vo-header">
     <div class="header">
-      <v-toggle-menu></v-toggle-menu>
-      <v-user-menu class="header-index-right"></v-user-menu>
+      <vo-toggle-menu></vo-toggle-menu>
+      <vo-user-menu class="header-index-right"></vo-user-menu>
     </div>
   </a-layout-header>
 </template>
 
 <script>
-import VToggleMenu from '../basic/MenuToggle'
-import VUserMenu from '../menu/UserMenu'
+import VoToggleMenu from '../business/MenuToggle'
+import VoUserMenu from '../menu/UserMenu'
 
 export default {
-  name: 'VHeader',
-  components: { VToggleMenu, VUserMenu }
+  name: 'VoHeader',
+  components: { VoToggleMenu, VoUserMenu }
 }
 </script>
 

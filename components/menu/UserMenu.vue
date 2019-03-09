@@ -3,7 +3,7 @@
     <span class="action">
       <a-icon type="question-circle-o"></a-icon>
     </span>
-    <header-notice class="action"></header-notice>
+    <vo-header-notice class="action"></vo-header-notice>
     <a-dropdown>
       <span class="action ant-dropdown-link user-dropdown-menu">
         <span style="font-weight: bold">
@@ -46,13 +46,13 @@
 </template>
 
 <script>
-import HeaderNotice from '../basic/HeaderNotice'
+import VoHeaderNotice from '../business/HeaderNotice'
 import { mapActions } from 'vuex'
 
 export default {
-  name: 'VUserMenu',
+  name: 'VoUserMenu',
   components: {
-    HeaderNotice
+    VoHeaderNotice
   },
   methods: {
     ...mapActions(['Logout']),

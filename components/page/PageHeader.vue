@@ -1,5 +1,17 @@
 <template>
   <div class="page-header">
+    <a-breadcrumb class="breadcrumb">
+      <a-breadcrumb-item
+        v-for="(item, index) in breadList"
+        :key="index">
+        <nuxt-link
+          v-if="item.name !== name"
+          :to="{ path: item.path }">
+          {{ item.meta.title }}
+        </nuxt-link>
+        <span v-else>{{ item.meta.title }}</span>
+      </a-breadcrumb-item>
+    </a-breadcrumb>
     <div class="detail">
       <div class="main">
         <div class="row">
@@ -16,6 +28,10 @@
             <slot name="search" />
           </div>
         </div>
+
+        <slot />
+
+        <slot name="pageTabs" />
       </div>
     </div>
   </div>
@@ -23,7 +39,7 @@
 
 <script>
 export default {
-  name: 'VPageHeader',
+  name: 'VoPageHeader',
 
   props: {
     title: {
@@ -37,19 +53,24 @@ export default {
       required: false
     }
   },
+
   data() {
     return {
-      name: ''
+      name: '',
+      breadList: []
     }
   },
+
   watch: {
     $route() {
       this.getBreadcrumb()
     }
   },
+
   created() {
     this.getBreadcrumb()
   },
+
   methods: {
     getBreadcrumb() {
       this.breadList = []
@@ -63,7 +84,7 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 .page-header {
   background: #fff;
   padding: 16px 32px 0;
@@ -148,6 +169,42 @@ export default {
         }
       }
     }
+  }
+}
+
+.table-page-search-wrapper {
+  width: 100%;
+  z-index: 100;
+
+  .ant-form-inline {
+    .ant-form-item {
+      display: flex;
+      margin-bottom: 24px;
+      margin-right: 0;
+
+      .ant-form-item-control-wrapper {
+        height: 32px;
+        min-width: 0;
+        flex: 1 1;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      > .ant-form-item-label {
+        line-height: 32px;
+        padding-right: 8px;
+        width: auto;
+      }
+      .ant-form-item-control {
+        height: 32px;
+        line-height: 32px;
+      }
+    }
+  }
+
+  .table-page-search-submitButtons {
+    display: block;
+    white-space: nowrap;
   }
 }
 </style>

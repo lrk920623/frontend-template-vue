@@ -1,0 +1,28 @@
+/**
+  滚动条样式优化
+ */
+::-webkit-scrollbar {
+  /*设置滚动条的宽，高度自适应即可*/
+  width: 14px;
+  height: auto;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  /*让外层轨道和指示块显示圆角，以及透明显示*/
+  border-radius: 10px;
+  border: 3px solid transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  /*设置轨道内滑动指示块的大小以及呈现样式*/
+  min-height: 20px;
+  border-radius: 10px;
+  background-clip: content-box;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) inset;
+}
+
+::-webkit-scrollbar-corner {
+  /*边角透明显示*/
+  background: transparent;
+}

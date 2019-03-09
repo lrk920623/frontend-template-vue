@@ -4,22 +4,22 @@
     :width="siderWidth"
     :collapsed="menuCollapsed">
     <slot />
-    <v-menu
+    <vo-menu
       :menus="menus"
-      :collapsed="menuCollapsed"></v-menu>
+      :collapsed="menuCollapsed"></vo-menu>
   </a-layout-sider>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import VMenu from '../menu/Menu'
+import VoMenu from '../menu/Menu'
 import { style } from '../../utils/constant'
 
 export default {
-  name: 'VSider',
+  name: 'VoSider',
 
   components: {
-    VMenu
+    VoMenu
   },
 
   data: function() {
@@ -40,17 +40,36 @@ export default {
             {
               route: 'table-search',
               name: '查询表格'
+            },
+            {
+              route: 'table-innerEdit',
+              name: '内联编辑表格'
+            },
+            {
+              route: 'table-nest',
+              name: '嵌套表格'
             }
           ]
         },
         {
-          name: '一级菜单 2',
-          icon: 'read',
-          route: 'factoryLicence',
+          name: '表单页',
+          icon: 'form',
+          route: 'form',
           child: [
             {
-              route: 'factories',
-              name: '二级菜单 2'
+              route: 'form-basic',
+              name: '基础表单'
+            }
+          ]
+        },
+        {
+          name: '对话框',
+          icon: 'star',
+          route: 'star',
+          child: [
+            {
+              route: 'modal-basicModal',
+              name: '基础对话框'
             }
           ]
         }

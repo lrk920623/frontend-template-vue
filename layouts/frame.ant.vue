@@ -1,32 +1,51 @@
 <template>
-  <a-layout class="vo-container">
-    <v-sider>
-      <v-logo></v-logo>
-    </v-sider>
-    <a-layout style="min-height: 100vh">
-      <v-header></v-header>
-      <a-layout-content>
-        <nuxt></nuxt>
-      </a-layout-content>
-      <a-layout-footer>
-        <v-page-footer></v-page-footer>
-      </a-layout-footer>
+  <a-locale-provider :locale="locale">
+    <a-layout class="vo-container ant-new-layout">
+      <vo-sider>
+        <vo-logo></vo-logo>
+      </vo-sider>
+      <a-layout
+        class="layout-right-box"
+        :style="{ paddingLeft: siderWidth }">
+        <vo-header></vo-header>
+        <a-layout-content>
+          <nuxt></nuxt>
+        </a-layout-content>
+        <vo-footer></vo-footer>
+      </a-layout>
     </a-layout>
-  </a-layout>
+  </a-locale-provider>
 </template>
 
 <script>
-import VHeader from '../components/layout/Header'
-import VSider from '../components/layout/Sider'
-import VLogo from '../components/basic/Logo'
-import VPageFooter from '../components/page/PageFooter'
+import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import { style } from '~/utils/constant'
+import VoHeader from 'components/layout/Header'
+import VoSider from 'components/layout/Sider'
+import VoLogo from 'components/business/Logo'
+import VoFooter from 'components/layout/Footer'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    VPageFooter,
-    VHeader,
-    VSider,
-    VLogo
+    VoFooter,
+    VoHeader,
+    VoSider,
+    VoLogo
+  },
+
+  data() {
+    return {
+      locale: zhCN
+    }
+  },
+
+  computed: {
+    ...mapState(['menuCollapsed']),
+
+    siderWidth() {
+      return this.menuCollapsed ? style.siderWidthShrink : style.siderWidth
+    }
   }
 }
 </script>
@@ -34,7 +53,7 @@ export default {
 <style lang="less">
 body {
   // 打开滚动条固定显示
-  overflow-y: scroll;
+  /*overflow-y: scroll;*/
 
   &.colorWeak {
     filter: invert(80%);
@@ -45,7 +64,12 @@ body {
   overflow-x: hidden;
 }
 
-.vo-container {
+.vo-container.ant-new-layout {
+  .layout-right-box {
+    min-height: 100vh;
+    transition: all 0.2s;
+  }
+
   .ant-layout-content {
     margin: 24px 24px 0;
     height: 100%;
@@ -56,6 +80,7 @@ body {
     }
   }
 
+  .ant-layout-header,
   .ant-layout-footer {
     padding: 0;
   }

@@ -1,56 +1,66 @@
 <template>
   <a-select
-    v-model="select"
-    :placeholder="placeholder"
-    :default-value="defaultValue"
+    :value="select"
+    :placeholder="title"
     @change="selectChange">
     <a-select-option
       v-for="item in list"
-      :key="item.value">
-      {{ item.name }}
+      :key="item[code]"
+      :value="item[code]">
+      {{ item[name] }}
     </a-select-option>
   </a-select>
 </template>
-z
+
 <script>
 export default {
-  name: 'VSelect',
+  name: 'VoSelect',
   model: {
     prop: 'selected',
     event: 'change'
   },
+
   props: {
     list: {
       type: Array,
       required: true
     },
+
     selected: {
       type: String,
+      required: false,
       default: ''
     },
+
     placeholder: {
       type: String,
       default: '请选择',
       required: false
+    },
+
+    type: {
+      type: Object,
+      required: false,
+      default: function() {
+        return {}
+      }
     }
   },
 
   data: function() {
     return {
-      select: this.selected || undefined
+      code: this.type.code || 'code',
+      name: this.type.name || 'name',
+      title: this.type.title || this.placeholder
     }
   },
 
   computed: {
-    defaultValue() {
-      return this.list.find(s => s.active).value
-    }
-  },
-
-  watch: {
-    selected(val) {
-      console.log('change select')
-      this.select = val || undefined
+    select: {
+      get() {
+        return this.selected || (this.list.length && this.list[0][this.code])
+      },
+      set() {}
     }
   },
 

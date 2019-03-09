@@ -72,7 +72,7 @@
 
 <script>
 export default {
-  name: 'HeaderNotice',
+  name: 'VoHeaderNotice',
   data() {
     return {
       loading: false

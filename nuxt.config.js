@@ -1,5 +1,6 @@
 const pkg = require('./package')
 const webpack = require('webpack')
+const path = require('path')
 
 module.exports = {
   mode: 'spa',
@@ -24,38 +25,54 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: '#1890ff' },
 
   /*
   ** Global CSS
   */
-  css: ['ant-design-vue/dist/antd.css', 'assets/style/main.less'],
+  css: ['assets/style/main.less', 'assets/style/modal.less'],
 
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/antd-ui', '@/plugins/axios'],
+  plugins: [
+    { src: '@/plugins/antd-ui', ssr: false },
+    { src: '@/plugins/axios', ssr: false },
+    { src: '@/plugins/api', ssr: false },
+    { src: '@/plugins/global', ssr: false }
+  ],
 
   /*
   ** Nuxt.js modules
   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
+
+  styleResources: {
+    less: './assets/style/globalConfig.less'
+  },
+
   /*
   ** Axios module configuration
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    proxy: false
+    // baseURL: ' http://localhost:7300/mock/5c6f6a401585903fa891d5c0/hs-mock',
+    proxy: true
   },
 
   proxy: {
-    '/api': {
+    '/api/master-data': {
+      target: 'http://10.0.1.51:9999',
+      changeOrigin: false
+    },
+
+    '/huashang/bi': {
       target: 'http://10.0.1.51:9909',
-      changeOrigin: true,
-      pathRewrite: { '^/api': '' }
+      changeOrigin: false
     }
   },
 
@@ -67,6 +84,7 @@ module.exports = {
 
     babel: {
       plugins: [
+        '@babel/plugin-transform-runtime',
         [
           'import',
           {
@@ -75,7 +93,6 @@ module.exports = {
             style: true
           }
         ],
-        '@babel/plugin-transform-runtime',
         'lodash'
       ]
     },
@@ -85,6 +102,12 @@ module.exports = {
         _: 'lodash'
       })
     ],
+
+    loaders: {
+      less: {
+        javascriptEnabled: true
+      }
+    },
 
     /*
     ** You can extend webpack config here
@@ -99,8 +122,15 @@ module.exports = {
           exclude: /(node_modules)/
         })
 
-        config.devtool = 'cheap-module-inline-source-map'
+        config.devtool = 'cheap-module-eval-source-map'
       }
+
+      Object.assign(config.resolve.alias, {
+        ['types']: path.resolve(__dirname, 'types'),
+        ['utils']: path.resolve(__dirname, 'utils'),
+        ['store']: path.resolve(__dirname, 'store'),
+        ['components']: path.resolve(__dirname, 'components')
+      })
     }
   }
 }

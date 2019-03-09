@@ -13,6 +13,7 @@
       重置
     </a-button>
     <a
+      v-if="showToggle"
       style="margin-left: 8px"
       @click="toggleAction">
       {{ toggle ? '收起' : '展开' }}
@@ -22,7 +23,7 @@
 </template>
 <script>
 export default {
-  name: 'VSearchReset',
+  name: 'VoSearchReset',
   model: {
     prop: 'advanced',
     event: 'toggle'
@@ -31,6 +32,12 @@ export default {
     advanced: {
       type: Boolean,
       default: false
+    },
+
+    showToggle: {
+      type: Boolean,
+      required: false,
+      default: true
     }
   },
 

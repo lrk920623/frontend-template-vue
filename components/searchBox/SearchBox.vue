@@ -8,6 +8,6 @@
 
 <script>
 export default {
-  name: 'VSearchBox'
+  name: 'VoSearchBox'
 }
 </script>

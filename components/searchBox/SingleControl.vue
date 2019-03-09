@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: 'VSingleControl',
+  name: 'VoSingleControl',
   props: {
     md: {
       type: Number,

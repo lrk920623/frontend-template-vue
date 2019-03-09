@@ -1,16 +1,13 @@
 <template>
   <a-table
+    :scroll="scroll"
     :columns="columns"
     :row-key="record => record._id"
-    :data-source="dataSource"
+    :data-source="data"
     :pagination="pagination"
     :loading="tableLoading"
     @change="handleTableChange">
-    <template
-      slot="name"
-      slot-scope="name">
-      {{ name.first }} {{ name.last }}
-    </template>
+    <slot />
   </a-table>
 </template>
 
@@ -18,7 +15,16 @@
 import { mapState } from 'vuex'
 
 export default {
+  name: 'VoTable',
+
   props: {
+    scroll: {
+      type: Object,
+      required: false,
+      default: function() {
+        return { x: false }
+      }
+    },
     pageNum: {
       type: Number,
       default: 1
@@ -48,16 +54,6 @@ export default {
 
   computed: {
     ...mapState(['tableLoading'])
-  },
-
-  watch: {
-    data(val) {
-      if (!val) return
-
-      this.dataSource = this.data.map((s, i) => {
-        return Object.assign({}, s, { _id: i + 1 })
-      })
-    }
   },
 
   methods: {

@@ -2,7 +2,7 @@
   <div class="logo">
     <nuxt-link :to="{name: 'home'}">
       <img
-        src="~@/assets/logo.svg"
+        src="@/assets/logo.svg"
         alt="logo">
       <h1 v-if="showTitle">
         {{ title }}
@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: 'VLogo',
+  name: 'VoLogo',
   props: {
     title: {
       type: String,
@@ -28,7 +28,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 .logo {
   height: 64px;
   position: relative;

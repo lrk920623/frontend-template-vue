@@ -38,7 +38,7 @@
 import { mapState } from 'vuex'
 
 export default {
-  name: 'VMenu',
+  name: 'VoMenu',
 
   props: {
     mode: {

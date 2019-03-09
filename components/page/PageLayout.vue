@@ -1,56 +1,85 @@
 <template>
   <div class="vo-page-layout">
-    <slot name="header" />
+    <vo-page-header
+      :title="headerTitle">
+      <slot
+        slot="search"
+        name="searchBox" />
+
+      <slot name="head" />
+
+      <div
+        v-if="tabs.length"
+        slot="pageTabs"
+        class="page-menu-tabs">
+        <a-tabs
+          :active-key="activeTab"
+          :tab-bar-style="{margin: 0}"
+          @change="(curr) => $emit('tabChange', curr)">
+          <a-tab-pane
+            v-for="item in tabs"
+            :key="item.key"
+            :tab="item.title"></a-tab-pane>
+        </a-tabs>
+      </div>
+    </vo-page-header>
     <div class="content">
-      <a-card :bordered="false">
+      <vo-card>
         <slot name="content" />
-      </a-card>
+      </vo-card>
     </div>
+
+    <slot />
   </div>
 </template>
 
 <script>
+import VoCard from 'components/basic/Card'
+import VoPageHeader from 'components/page/PageHeader'
+
 export default {
-  name: 'VPageLayout'
+  name: 'VoPageLayout',
+
+  components: {
+    VoCard,
+    VoPageHeader
+  },
+
+  props: {
+    headerTitle: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    tabs: {
+      type: Array,
+      required: false,
+      default: () => {
+        return []
+      }
+    },
+
+    activeTab: {
+      type: String,
+      required: false,
+      default: '0'
+    }
+  }
 }
 </script>
 
 <style lang="less">
-.table-page-search-wrapper {
-  width: 100%;
-
-  .ant-form-inline {
-    .ant-form-item {
-      display: flex;
-      margin-bottom: 24px;
-      margin-right: 0;
-
-      .ant-form-item-control-wrapper {
-        flex: 1 1;
-        display: inline-block;
-        vertical-align: middle;
-      }
-
-      > .ant-form-item-label {
-        line-height: 32px;
-        padding-right: 8px;
-        width: auto;
-      }
-      .ant-form-item-control {
-        height: 32px;
-        line-height: 32px;
-      }
-    }
-  }
-
-  .table-page-search-submitButtons {
-    display: block;
-    white-space: nowrap;
-  }
-}
-
 .content {
   margin: 24px 24px 0;
+
+  .table-operator {
+    margin-bottom: 18px;
+
+    button {
+      margin-right: 8px;
+    }
+  }
 
   .link {
     margin-top: 16px;
