@@ -59,18 +59,15 @@
 <script>
 import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 import { mapState, mapMutations } from 'vuex'
+import { mixin } from 'utils/constant'
 
 import VoInput from 'components/basic/Input'
 import VoTable from 'components/table/RenderTable'
-import VoPageLayout from 'components/page/PageLayout'
+import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
 import VoSearchBox from 'components/searchBox/SearchBox'
 import VoSingleControl from 'components/searchBox/SingleControl'
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
-
   name: 'VoNestTable',
   components: {
     VoSearchBox,
@@ -80,6 +77,13 @@ export default {
     VoTable,
     VoInput
   },
+
+  meta: {
+    title: '嵌套表格'
+  },
+
+  mixins: [mixin],
+
   data() {
     return {
       visible: false,

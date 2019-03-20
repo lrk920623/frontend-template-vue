@@ -1,5 +1,6 @@
 <template>
   <vo-modal
+    :open="true"
     :title="type.title"
     @close="$emit('close')"
     @handle-ok="ok">
@@ -24,7 +25,7 @@
       :type="type"
       :loading="loading"
       :record="record"
-      :selected="selected"
+      :selected="list"
       :active-page="activePage"
       :child="isGroup ? ['storeCode', 'storeName', 'stores'] : null"
       @pageChange="getList"
@@ -73,7 +74,7 @@ export default {
     this.inputChange = debounce(this.inputChange)
     return {
       search: '',
-      list: [],
+      list: Object.assign([], this.selected),
       activePage: 1,
       record: {},
       loading: false,
@@ -83,13 +84,26 @@ export default {
       },
       operations: [],
       districts: [],
-      types,
-      isStore: this.type.sign === types.store.sign,
-      isGroup: this.type.sign === types.group.sign
+      types
+    }
+  },
+
+  computed: {
+    isStore() {
+      return this.type && this.type.sign === types.store.sign
+    },
+
+    isGroup() {
+      return this.type && this.type.sign === types.group.sign
     }
   },
 
   watch: {
+    open(val) {
+      if (!val) return
+      this.init()
+    },
+
     ['param.operation']() {
       this.getList()
     },

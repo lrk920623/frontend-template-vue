@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import { mixin } from 'utils/constant'
 const dataSource = []
 for (let i = 0; i < 5; i++) {
   dataSource.push({
@@ -48,9 +49,7 @@ for (let i = 0; i < 5; i++) {
   })
 }
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
+  mixins: [mixin],
 
   data() {
     return {

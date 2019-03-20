@@ -46,8 +46,11 @@
 </template>
 
 <script>
+import { Modal } from 'ant-design-vue'
 import VoHeaderNotice from '../business/HeaderNotice'
 import { mapActions } from 'vuex'
+import { removeSession } from 'utils/storage'
+import { user } from 'utils/constant'
 
 export default {
   name: 'VoUserMenu',
@@ -59,12 +62,14 @@ export default {
     handleLogout() {
       const that = this
 
-      this.$confirm({
+      Modal.confirm({
         title: '提示',
         content: '真的要注销登录吗 ?',
         onOk() {
-          return that
-            .Logout({})
+          removeSession(user.token)
+
+          return that.$axios
+            .post('logout')
             .then(() => {
               window.location.reload()
             })

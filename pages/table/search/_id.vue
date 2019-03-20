@@ -1,29 +1,45 @@
 <template>
-  <vo-page-layout
-    :tabs="tabs"
-    :active-tab="activeTab"
-    @tabChange="changeTab">
-    <div slot="head">
-      <h1>单号：{{ $route.params.id }}</h1>
-    </div>
-    <div slot="content">
-      <keep-alive>
-        <component :is="activeComponent"></component>
-      </keep-alive>
-    </div>
+  <vo-page-layout :tab="true">
+    <template slot="head">
+      <vo-detail-back @back="back"></vo-detail-back>
+      <div>
+        <h1>单号：{{ $route.params.id }}</h1>
+      </div>
+    </template>
+    <template slot="tabs">
+      <a-tabs
+        :active-key="activeTab"
+        :tab-bar-style="{margin: 0}"
+        @change="changeTab">
+        <a-tab-pane
+          key="1"
+          tab="商品列表">
+          商品列表
+        </a-tab-pane>
+
+        <a-tab-pane
+          key="2"
+          tab="审批历史">
+          审批历史
+        </a-tab-pane>
+      </a-tabs>
+    </template>
   </vo-page-layout>
 </template>
 
 <script>
-import VoPageLayout from 'components/page/PageLayout'
-import VoBasicInfo from 'components/business/basicInfo'
-import VoProductList from 'components/business/productList'
+import VoDetailBack from 'components/business/detailBack'
+import VoPageLayout from 'components/layout/PageLayout'
+import { mixin } from 'utils/constant'
+
+const father = {
+  name: 'table-search',
+  meta: {
+    title: '查询表格'
+  }
+}
 
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
-
   validate({ params }) {
     // 必须是number类型
     return /^\d+$/.test(params.id)
@@ -31,33 +47,29 @@ export default {
 
   components: {
     VoPageLayout,
-    VoBasicInfo,
-    VoProductList
+    VoDetailBack
   },
+
+  meta: {
+    title: '详情',
+    father
+  },
+
+  mixins: [mixin],
 
   data() {
     return {
-      activeComponent: 'VoBasicInfo',
-      activeTab: '1',
-      tabs: [
-        {
-          key: '1',
-          title: '基本信息',
-          component: 'VoBasicInfo'
-        },
-        {
-          key: '2',
-          title: '商品列表',
-          component: 'VoProductList'
-        }
-      ]
+      activeTab: '1'
     }
   },
 
   methods: {
     changeTab(curr) {
       this.activeTab = curr
-      this.activeComponent = this.tabs.find(s => s.key === curr).component
+    },
+
+    back() {
+      this.$router.push({ name: father.name })
     }
   }
 }

@@ -5,8 +5,8 @@
         v-for="(item, index) in breadList"
         :key="index">
         <nuxt-link
-          v-if="item.name !== name"
-          :to="{ path: item.path }">
+          v-if="item.name !== name && !item.meta.noLink"
+          :to="{ name: item.name }">
           {{ item.meta.title }}
         </nuxt-link>
         <span v-else>{{ item.meta.title }}</span>
@@ -14,22 +14,22 @@
     </a-breadcrumb>
     <div class="detail">
       <div class="main">
-        <div class="row">
-          <h1
-            v-if="title"
-            class="title">
+        <div
+          v-if="title"
+          class="row">
+          <h1 class="title">
             {{ title }}
           </h1>
         </div>
         <div class="row">
-          <div
-            v-if="search"
-            class="table-page-search-wrapper">
+          <div class="table-page-search-wrapper">
             <slot name="search" />
           </div>
         </div>
 
-        <slot />
+        <div class="head">
+          <slot name="head" />
+        </div>
 
         <slot name="pageTabs" />
       </div>
@@ -45,11 +45,6 @@ export default {
     title: {
       type: String,
       default: '',
-      required: false
-    },
-    search: {
-      type: Boolean,
-      default: true,
       required: false
     }
   },
@@ -77,8 +72,12 @@ export default {
 
       this.name = this.$route.name
       this.$route.matched.forEach(item => {
+        if (item.meta.father) this.breadList.push(item.meta.father)
+
         this.breadList.push(item)
       })
+
+      console.log('list', this.breadList)
     }
   }
 }
@@ -89,6 +88,33 @@ export default {
   background: #fff;
   padding: 16px 32px 0;
   border-bottom: 1px solid #e8e8e8;
+
+  .head {
+    display: flex;
+
+    .back {
+      width: 50px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      color: #1790ff;
+      position: relative;
+
+      > i:hover {
+        cursor: pointer;
+      }
+
+      &:after {
+        content: '';
+        border-left: 1px solid;
+        height: 18px;
+        position: absolute;
+        right: 15px;
+        top: 13px;
+        color: #ccc;
+      }
+    }
+  }
 
   .breadcrumb {
     margin-bottom: 16px;

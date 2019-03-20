@@ -64,11 +64,12 @@
 </template>
 
 <script>
-import VoPageLayout from 'components/page/PageLayout'
+import VoPageLayout from 'components/layout/PageLayout'
 import VoFormItem from 'components/basic/FormItem'
 import VoInput from 'components/basic/Input'
 
 import { buildValidator } from '../../utils/constant'
+import { mixin } from 'utils/constant'
 
 const validator = {
   title: { rule: [['required', '请输入标题']] },
@@ -78,14 +79,16 @@ const validator = {
 const radios = [{ v: 1, n: '公开' }, { v: 2, n: '不公开' }]
 
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
-
   components: {
     VoPageLayout,
     VoFormItem,
     VoInput
+  },
+
+  mixins: [mixin],
+
+  meta: {
+    title: '基础表单'
   },
 
   data() {

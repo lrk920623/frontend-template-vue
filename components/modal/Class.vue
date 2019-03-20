@@ -1,5 +1,6 @@
 <template>
   <vo-modal
+    :open="true"
     :title="type.title"
     @close="$emit('close')"
     @handle-ok="ok">

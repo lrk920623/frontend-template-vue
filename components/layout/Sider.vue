@@ -59,6 +59,10 @@ export default {
             {
               route: 'form-basic',
               name: '基础表单'
+            },
+            {
+              route: 'form-step',
+              name: '分步表单'
             }
           ]
         },
@@ -72,6 +76,22 @@ export default {
               name: '基础对话框'
             }
           ]
+        },
+        {
+          name: '可视化',
+          icon: 'bar-chart',
+          route: 'chart',
+          child: [
+            {
+              route: 'chart-bar',
+              name: '柱状图'
+            }
+          ]
+        },
+        {
+          name: '基础组件',
+          icon: 'appstore',
+          route: 'component'
         }
       ]
     }

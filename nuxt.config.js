@@ -36,10 +36,12 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '@/plugins/chart', ssr: false },
     { src: '@/plugins/antd-ui', ssr: false },
     { src: '@/plugins/axios', ssr: false },
     { src: '@/plugins/api', ssr: false },
-    { src: '@/plugins/global', ssr: false }
+    { src: '@/plugins/global', ssr: false },
+    { src: '@/plugins/route', ssr: false }
   ],
 
   /*
@@ -60,8 +62,8 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    // baseURL: ' http://localhost:7300/mock/5c6f6a401585903fa891d5c0/hs-mock',
-    proxy: true
+    baseURL: ' http://localhost:7300/mock/5c6f6a401585903fa891d5c0/hs-mock',
+    proxy: false
   },
 
   proxy: {

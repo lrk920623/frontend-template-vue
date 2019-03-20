@@ -74,24 +74,14 @@
       </vo-single-control>
     </vo-search-box>
 
-    <div slot="content">
-      <h1>通知控件</h1>
-
-      <a-button @click="showNotify">
-        全局展示通知提醒信息
-      </a-button>
-
-      <a-button @click="showMessage">
-        全局展示操作反馈信息
-      </a-button>
-    </div>
+    <div slot="content" />
 
     <vo-common-modal
       v-if="openCommon"
       :promise="promise"
       :type="types[activeModal]"
       :selected="select[activeModal]"
-      @close="changeVisible()"
+      @close="changeVisible(types[activeModal])"
       @ok="(data) => selectedItems(activeModal, data)"></vo-common-modal>
 
     <vo-class-modal
@@ -111,7 +101,7 @@
 </template>
 
 <script>
-import VoPageLayout from 'components/page/PageLayout'
+import VoPageLayout from 'components/layout/PageLayout'
 import VoParamShow from 'components/business/ParamShow'
 import VoSearchBox from 'components/searchBox/SearchBox'
 import VoSingleControl from 'components/searchBox/SingleControl'
@@ -120,14 +110,10 @@ import VoCommonModal from 'components/modal/CommonModal'
 import VoClassModal from 'components/modal/Class'
 import VoCategoryModal from 'components/modal/Category'
 
-import { types } from 'utils/constant'
+import { types, mixin } from 'utils/constant'
 import { notify, inform, getUrlByType, buildPromise } from 'utils/common'
 
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
-
   components: {
     VoParamShow,
     VoPageLayout,
@@ -138,6 +124,12 @@ export default {
     VoSingleControl
   },
 
+  meta: {
+    title: '基础表单'
+  },
+
+  mixins: [mixin],
+
   data() {
     return {
       types,
@@ -147,6 +139,18 @@ export default {
       activeModal: '',
       promise: () => {}
     }
+  },
+
+  asyncData() {
+    console.log('asyncData')
+  },
+
+  beforeCreate() {
+    console.log('beforeCreate')
+  },
+
+  created() {
+    console.log('created')
   },
 
   methods: {
@@ -170,14 +174,6 @@ export default {
 
     selectedItems(type, data) {
       this.$set(this.select, type, data)
-    },
-
-    showNotify() {
-      notify('通知', '测试')
-    },
-
-    showMessage() {
-      inform('message')
     }
   }
 }

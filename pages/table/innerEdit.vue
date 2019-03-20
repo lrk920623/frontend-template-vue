@@ -158,7 +158,7 @@
 
 <script>
 import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
-import VoPageLayout from 'components/page/PageLayout'
+import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
 import VoSearchBox from 'components/searchBox/SearchBox'
 import VoSingleControl from 'components/searchBox/SingleControl'
@@ -167,12 +167,9 @@ import VoTable from 'components/table/RenderTable'
 import VoModal from 'components/modal/index'
 import { mapState, mapMutations } from 'vuex'
 import { Modal } from 'ant-design-vue'
+import { mixin } from 'utils/constant'
 
 export default {
-  layout({ store }) {
-    return store.state.globalLayout
-  },
-
   name: 'VoInnerEdit',
   components: {
     VoSearchBox,
@@ -183,6 +180,12 @@ export default {
     VoInput,
     VoModal
   },
+
+  meta: {
+    title: '内联编辑'
+  },
+
+  mixins: [mixin],
 
   data() {
     return {

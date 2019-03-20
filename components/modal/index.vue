@@ -17,15 +17,24 @@
 export default {
   name: 'VoModal',
   props: {
+    open: {
+      type: Boolean,
+      required: false,
+      default: true
+    },
+
     title: {
       type: String,
       required: true
     }
   },
 
-  data() {
-    return {
-      innerOpen: true
+  computed: {
+    innerOpen: {
+      get: function() {
+        return this.open
+      },
+      set: function() {}
     }
   },
 

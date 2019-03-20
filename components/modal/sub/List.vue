@@ -146,7 +146,6 @@ export default {
   },
 
   data() {
-    console.log(this)
     return {
       list: [],
       total: 0,

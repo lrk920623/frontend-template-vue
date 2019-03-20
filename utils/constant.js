@@ -1,3 +1,13 @@
+export const user = {
+  token: 'Access_Token'
+}
+
+export const mixin = {
+  layout({ store }) {
+    return store.state.globalLayout
+  }
+}
+
 export const StoreModuleName = {
   home: 'home',
   modal: 'modal',
