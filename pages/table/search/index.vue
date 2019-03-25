@@ -62,25 +62,17 @@ import { StoreModuleName, mixin } from 'utils/constant'
 import { GET_SEARCH_LIST } from 'types/action-types'
 import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 
-import VoInput from 'components/basic/Input'
 import VoTable from 'components/table/Table'
-import VoSelect from 'components/basic/Select'
 import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
-import VoSearchBox from 'components/searchBox/SearchBox'
-import VoSingleControl from 'components/searchBox/SingleControl'
 
 const { mapState, mapActions } = createNamespacedHelpers(StoreModuleName.table)
 
 export default {
   components: {
-    VoSearchBox,
-    VoSingleControl,
     VoPageLayout,
     VoSearchReset,
-    VoSelect,
-    VoTable,
-    VoInput
+    VoTable
   },
 
   meta: {

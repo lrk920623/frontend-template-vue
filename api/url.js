@@ -1,14 +1,5 @@
 let urls = {}
 
-const bi = {
-  base: '/huashang/bi/',
-  list: {
-    getCategory: 'category/list',
-    getSubCategoryLevel: 'sub/category/list',
-    getAllSubCategoryLevel: 'category/search'
-  }
-}
-
 const master = {
   base: '/api/master-data/',
   list: {
@@ -39,8 +30,7 @@ function addBase(url) {
 }
 
 addBase({
-  master,
-  bi
+  master
 })
 
 export { urls }

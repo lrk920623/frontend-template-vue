@@ -32,14 +32,12 @@
 </template>
 
 <script>
-import VoCard from 'components/basic/Card'
 import VoPageHeader from 'components/layout/PageHeader'
 
 export default {
   name: 'VoPageLayout',
 
   components: {
-    VoCard,
     VoPageHeader
   },
 

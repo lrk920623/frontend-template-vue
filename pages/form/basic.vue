@@ -66,7 +66,6 @@
 <script>
 import VoPageLayout from 'components/layout/PageLayout'
 import VoFormItem from 'components/basic/FormItem'
-import VoInput from 'components/basic/Input'
 
 import { buildValidator } from '../../utils/constant'
 import { mixin } from 'utils/constant'
@@ -81,8 +80,7 @@ const radios = [{ v: 1, n: '公开' }, { v: 2, n: '不公开' }]
 export default {
   components: {
     VoPageLayout,
-    VoFormItem,
-    VoInput
+    VoFormItem
   },
 
   mixins: [mixin],

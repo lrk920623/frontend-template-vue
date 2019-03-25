@@ -160,11 +160,7 @@
 import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
-import VoSearchBox from 'components/searchBox/SearchBox'
-import VoSingleControl from 'components/searchBox/SingleControl'
-import VoInput from 'components/basic/Input'
 import VoTable from 'components/table/RenderTable'
-import VoModal from 'components/modal/index'
 import { mapState, mapMutations } from 'vuex'
 import { Modal } from 'ant-design-vue'
 import { mixin } from 'utils/constant'
@@ -172,13 +168,9 @@ import { mixin } from 'utils/constant'
 export default {
   name: 'VoInnerEdit',
   components: {
-    VoSearchBox,
-    VoSingleControl,
     VoPageLayout,
     VoSearchReset,
-    VoTable,
-    VoInput,
-    VoModal
+    VoTable
   },
 
   meta: {

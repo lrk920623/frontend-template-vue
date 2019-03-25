@@ -61,21 +61,15 @@ import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 import { mapState, mapMutations } from 'vuex'
 import { mixin } from 'utils/constant'
 
-import VoInput from 'components/basic/Input'
 import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
-import VoSearchBox from 'components/searchBox/SearchBox'
-import VoSingleControl from 'components/searchBox/SingleControl'
 export default {
   name: 'VoNestTable',
   components: {
-    VoSearchBox,
-    VoSingleControl,
     VoPageLayout,
     VoSearchReset,
-    VoTable,
-    VoInput
+    VoTable
   },
 
   meta: {

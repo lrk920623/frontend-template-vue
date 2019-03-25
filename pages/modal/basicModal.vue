@@ -74,10 +74,13 @@
       </vo-single-control>
     </vo-search-box>
 
-    <div slot="content" />
+    <div slot="content">
+      content
+    </div>
 
     <vo-common-modal
       v-if="openCommon"
+      :types="types"
       :promise="promise"
       :type="types[activeModal]"
       :selected="select[activeModal]"
@@ -86,6 +89,7 @@
 
     <vo-class-modal
       v-if="open[types.class.sign]"
+      :types="types"
       :promise="promise"
       :selected="select[activeModal]"
       @close="changeVisible(types.class, true)"
@@ -93,6 +97,7 @@
 
     <vo-category-modal
       v-if="open[types.category.sign]"
+      :types="types"
       :promise="promise"
       :selected="select[activeModal]"
       @close="changeVisible(types.category, true)"
@@ -102,26 +107,14 @@
 
 <script>
 import VoPageLayout from 'components/layout/PageLayout'
-import VoParamShow from 'components/business/ParamShow'
-import VoSearchBox from 'components/searchBox/SearchBox'
-import VoSingleControl from 'components/searchBox/SingleControl'
 
-import VoCommonModal from 'components/modal/CommonModal'
-import VoClassModal from 'components/modal/Class'
-import VoCategoryModal from 'components/modal/Category'
-
-import { types, mixin } from 'utils/constant'
-import { notify, inform, getUrlByType, buildPromise } from 'utils/common'
+import { mixin, types } from 'utils/constant'
+import { getUrlByType, buildPromise } from 'utils/common'
+import { mapState } from 'vuex'
 
 export default {
   components: {
-    VoParamShow,
-    VoPageLayout,
-    VoCommonModal,
-    VoClassModal,
-    VoCategoryModal,
-    VoSearchBox,
-    VoSingleControl
+    VoPageLayout
   },
 
   meta: {

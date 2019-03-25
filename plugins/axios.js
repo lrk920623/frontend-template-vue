@@ -55,16 +55,16 @@ export default function({ $axios, redirect }) {
       alert(message).then(doRedirect)
 
       function doRedirect() {
-        // const arg = { uri: r.redirectTo, cancel: false }
-        // $rootScope.$broadcast('before-json-redirect', arg)
-        // if (!arg.cancel) {
-        //   const uri = arg.uri
-        //   if (uri.indexOf('http') === 0) {
-        //     location.href = uri
-        //   } else {
-        //     $location.path(r.redirectTo)
-        //   }
-        // }
+        const arg = { uri: r.redirectTo, cancel: false }
+        $rootScope.$broadcast('before-json-redirect', arg)
+        if (!arg.cancel) {
+          const uri = arg.uri
+          if (uri.indexOf('http') === 0) {
+            location.href = uri
+          } else {
+            redirect(r.redirectTo)
+          }
+        }
       }
     }
 

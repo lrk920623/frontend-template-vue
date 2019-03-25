@@ -122,7 +122,6 @@ export default {
 
   .detail {
     display: flex;
-    /*margin-bottom: 16px;*/
 
     .avatar {
       flex: 0 1 72px;
@@ -154,7 +153,7 @@ export default {
         font-weight: 500;
         line-height: 28px;
         color: rgba(0, 0, 0, 0.85);
-        margin-bottom: 16px;
+        margin-bottom: 22px;
         flex: auto;
       }
       .logo {

@@ -41,7 +41,8 @@ module.exports = {
     { src: '@/plugins/axios', ssr: false },
     { src: '@/plugins/api', ssr: false },
     { src: '@/plugins/global', ssr: false },
-    { src: '@/plugins/route', ssr: false }
+    { src: '@/plugins/route', ssr: false },
+    { src: '@/plugins/vo-lib', ssr: false }
   ],
 
   /*
@@ -62,18 +63,13 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
-    baseURL: ' http://localhost:7300/mock/5c6f6a401585903fa891d5c0/hs-mock',
+    baseURL: 'http://localhost:7300/mock/5c6f6a401585903fa891d5c0/hs-mock',
     proxy: false
   },
 
   proxy: {
     '/api/master-data': {
       target: 'http://10.0.1.51:9999',
-      changeOrigin: false
-    },
-
-    '/huashang/bi': {
-      target: 'http://10.0.1.51:9909',
       changeOrigin: false
     }
   },
