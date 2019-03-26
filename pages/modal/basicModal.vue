@@ -79,7 +79,7 @@
     </div>
 
     <vo-common-modal
-      v-if="openCommon"
+      :open="openCommon"
       :types="types"
       :promise="promise"
       :type="types[activeModal]"
@@ -88,7 +88,7 @@
       @ok="(data) => selectedItems(activeModal, data)"></vo-common-modal>
 
     <vo-class-modal
-      v-if="open[types.class.sign]"
+      :open="open[types.class.sign]"
       :types="types"
       :promise="promise"
       :selected="select[activeModal]"
@@ -96,7 +96,7 @@
       @ok="(data) => selectedItems(types.class.sign, data)"></vo-class-modal>
 
     <vo-category-modal
-      v-if="open[types.category.sign]"
+      :open="open[types.category.sign]"
       :types="types"
       :promise="promise"
       :selected="select[activeModal]"
@@ -110,7 +110,6 @@ import VoPageLayout from 'components/layout/PageLayout'
 
 import { mixin, types } from 'utils/constant'
 import { getUrlByType, buildPromise } from 'utils/common'
-import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -130,20 +129,8 @@ export default {
       openCommon: false,
       select: {},
       activeModal: '',
-      promise: () => {}
+      promise: null
     }
-  },
-
-  asyncData() {
-    console.log('asyncData')
-  },
-
-  beforeCreate() {
-    console.log('beforeCreate')
-  },
-
-  created() {
-    console.log('created')
   },
 
   methods: {
