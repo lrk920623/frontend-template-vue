@@ -1,5 +1,5 @@
 <template>
-  <div class="back">
+  <div class="header-detail-back">
     <a-icon
       type="arrow-left"
       @click="click"></a-icon>

@@ -67,7 +67,7 @@
 import VoPageLayout from 'components/layout/PageLayout'
 import VoFormItem from 'components/basic/FormItem'
 
-import { buildValidator } from '../../utils/constant'
+import { buildValidator } from 'utils/common'
 import { mixin } from 'utils/constant'
 
 const validator = {

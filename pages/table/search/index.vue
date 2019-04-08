@@ -62,7 +62,7 @@ import { StoreModuleName, mixin } from 'utils/constant'
 import { GET_SEARCH_LIST } from 'types/action-types'
 import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 
-import VoTable from 'components/table/Table'
+import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
 

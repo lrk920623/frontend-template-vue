@@ -42,6 +42,10 @@ module.exports = {
           allowFirstLine: false
         }
       }
-    ]
+    ],
+    "vue/component-name-in-template-casing": ["error", "kebab-case", {
+      "registeredComponentsOnly": true,
+      "ignores": []
+    }]
   }
 }

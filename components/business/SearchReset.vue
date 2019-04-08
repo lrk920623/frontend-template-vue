@@ -8,6 +8,7 @@
       查询
     </a-button>
     <a-button
+      v-if="showReset"
       style="margin-left: 8px"
       @click="$emit('reset', {})">
       重置
@@ -31,13 +32,19 @@ export default {
   props: {
     advanced: {
       type: Boolean,
-      default: false
+      default: true
     },
 
     showToggle: {
       type: Boolean,
       required: false,
-      default: true
+      default: false
+    },
+
+    showReset: {
+      type: Boolean,
+      required: false,
+      default: false
     }
   },
 

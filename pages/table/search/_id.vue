@@ -32,7 +32,7 @@ import VoDetailBack from 'components/business/detailBack'
 import VoPageLayout from 'components/layout/PageLayout'
 import { mixin } from 'utils/constant'
 
-const father = {
+const parent = {
   name: 'table-search',
   meta: {
     title: '查询表格'
@@ -52,7 +52,7 @@ export default {
 
   meta: {
     title: '详情',
-    father
+    parent
   },
 
   mixins: [mixin],
@@ -69,7 +69,7 @@ export default {
     },
 
     back() {
-      this.$router.push({ name: father.name })
+      this.$router.push({ name: parent.name })
     }
   }
 }

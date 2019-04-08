@@ -1,0 +1,6 @@
+.fade-top-enter-active, .fade-top-leave-active {
+  transition: opacity 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+.fade-top-enter, .fade-top-leave-to {
+  opacity: 0;
+}

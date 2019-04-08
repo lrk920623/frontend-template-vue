@@ -30,7 +30,11 @@ module.exports = {
   /*
   ** Global CSS
   */
-  css: ['assets/style/main.less', 'assets/style/modal.less'],
+  css: [
+    'assets/style/main.less',
+    'assets/style/modal.less',
+    'assets/style/transition.css'
+  ],
 
   /*
   ** Plugins to load before mounting the App
@@ -123,11 +127,13 @@ module.exports = {
         config.devtool = 'cheap-module-eval-source-map'
       }
 
+      // extend webpack alias
       Object.assign(config.resolve.alias, {
         ['types']: path.resolve(__dirname, 'types'),
         ['utils']: path.resolve(__dirname, 'utils'),
         ['store']: path.resolve(__dirname, 'store'),
-        ['components']: path.resolve(__dirname, 'components')
+        ['components']: path.resolve(__dirname, 'components'),
+        ['packages']: path.resolve(__dirname, 'packages')
       })
     }
   }

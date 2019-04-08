@@ -87,7 +87,7 @@ export default {
         this.menus.forEach(s => {
           if (s.route === val || !s.child) return
 
-          const active = s.child.find(c => c.route === val)
+          const active = s.child.find(c => val.includes(c.route))
           if (active) activeMenuParent.push(s.route)
         })
 

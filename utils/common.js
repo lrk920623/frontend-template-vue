@@ -1,6 +1,7 @@
 import { notification, message } from 'ant-design-vue'
-import { urls } from '../api/url'
+import { urls } from './api'
 import { types } from './constant'
+import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
 
 import Vue from 'vue'
 
@@ -81,4 +82,34 @@ export function buildPromise(url) {
   } else {
     return fetch(url)
   }
+}
+
+export function buildValidator(validator) {
+  _.forIn(validator, (val, key) => {
+    val.code = key
+    val.rule = [key, { ...getRules(val.rule) }]
+  })
+
+  return validator
+}
+
+export function getRules(rule) {
+  const rules = rule.map(s => {
+    return {
+      [s[0]]: true,
+      message: s[1]
+    }
+  })
+
+  return { rules }
+}
+
+export async function tableWithLoading(promise) {
+  const store = Vue.prototype.$nuxt.$store
+
+  store.commit(CHANGE_TABLE_LOADING, true)
+  const { data } = await promise()
+  store.commit(CHANGE_TABLE_LOADING)
+
+  return data || {}
 }

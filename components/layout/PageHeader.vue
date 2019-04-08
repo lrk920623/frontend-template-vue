@@ -12,12 +12,12 @@
         <span v-else>{{ item.meta.title }}</span>
       </a-breadcrumb-item>
     </a-breadcrumb>
-    <div class="detail">
-      <div class="main">
+    <div class="page-header-detail">
+      <div class="page-header-detail-main">
         <div
           v-if="title"
           class="row">
-          <h1 class="title">
+          <h1 class="page-header-detail-main-title">
             {{ title }}
           </h1>
         </div>
@@ -27,7 +27,7 @@
           </div>
         </div>
 
-        <div class="head">
+        <div class="page-header-detail-main-head">
           <slot name="head" />
         </div>
 
@@ -72,7 +72,11 @@ export default {
 
       this.name = this.$route.name
       this.$route.matched.forEach(item => {
-        if (item.meta.father) this.breadList.push(item.meta.father)
+        const parent = item.meta.parent
+        if (parent) {
+          const route = parent instanceof Array ? parent : [parent]
+          this.breadList.push(...route)
+        }
 
         this.breadList.push(item)
       })
@@ -86,17 +90,17 @@ export default {
 <style lang="less">
 .page-header {
   background: #fff;
-  padding: 16px 32px 0;
+  padding: 16px 24px 0;
   border-bottom: 1px solid #e8e8e8;
 
-  .head {
+  .page-header-detail-main-head {
     display: flex;
 
-    .back {
+    .header-detail-back {
       width: 50px;
-      height: 40px;
-      line-height: 40px;
-      font-size: 20px;
+      height: 28px;
+      line-height: 23px;
+      font-size: 15px;
       color: #1790ff;
       position: relative;
 
@@ -107,10 +111,10 @@ export default {
       &:after {
         content: '';
         border-left: 1px solid;
-        height: 18px;
+        height: 13px;
         position: absolute;
-        right: 15px;
-        top: 13px;
+        right: 16px;
+        top: 5px;
         color: #ccc;
       }
     }
@@ -120,8 +124,9 @@ export default {
     margin-bottom: 16px;
   }
 
-  .detail {
+  .page-header-detail {
     display: flex;
+    padding-bottom: 8px;
 
     .avatar {
       flex: 0 1 72px;
@@ -135,7 +140,7 @@ export default {
       }
     }
 
-    .main {
+    .page-header-detail-main {
       width: 100%;
       flex: 0 1 auto;
 
@@ -148,7 +153,7 @@ export default {
         }
       }
 
-      .title {
+      .page-header-detail-main-title {
         font-size: 20px;
         font-weight: 500;
         line-height: 28px;

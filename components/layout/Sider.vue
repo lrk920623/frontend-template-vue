@@ -33,6 +33,21 @@ export default {
           icon: 'dashboard'
         },
         {
+          name: '商品淘汰管理',
+          icon: 'form',
+          route: 'outManage',
+          child: [
+            {
+              route: 'outManage-apply',
+              name: '商品淘汰申请'
+            },
+            {
+              route: 'outManage-publish',
+              name: '华商月度淘汰商品公布'
+            }
+          ]
+        },
+        {
           route: 'table',
           name: '列表页',
           icon: 'table',

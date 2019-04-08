@@ -173,7 +173,8 @@ export default {
   width: 100%;
   height: 100vh;
   min-height: 100%;
-  background: #f0f2f5 url('~assets/background.svg') no-repeat 50%;
+  background: @basic-background-gray-color url('~assets/background.svg')
+    no-repeat 50%;
   background-size: 100%;
   padding: 110px 0 144px;
   position: relative;

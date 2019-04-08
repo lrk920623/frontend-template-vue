@@ -22,9 +22,7 @@
     <div
       v-else
       class="content">
-      <vo-card>
-        <slot name="content" />
-      </vo-card>
+      <slot name="content" />
     </div>
 
     <slot />
@@ -64,6 +62,11 @@ export default {
 
 .vo-page-layout {
   .page-tabs {
+    .content {
+      margin-top: 24px;
+      padding: 0;
+    }
+
     .ant-tabs-top-bar {
       background: #fff;
 
@@ -73,15 +76,28 @@ export default {
     }
 
     .ant-tabs-top-content > .ant-tabs-tabpane {
-      margin-top: 24px !important;
-      background: #fff;
-      padding: 0 24px;
       min-height: 500px;
+      margin-top: 24px !important;
+    }
+
+    .page-detail {
+      background: @basic-background-gray-color;
+
+      .vo-search-box {
+        margin: 0 32px;
+        padding: 0;
+
+        > .ant-row {
+          margin-bottom: 24px;
+        }
+      }
     }
   }
 
   .content {
-    margin: 24px 24px 0;
+    margin-top: 24px;
+    padding: 24px 24px 0;
+    background: #fff;
 
     .table-operator {
       margin-bottom: 18px;

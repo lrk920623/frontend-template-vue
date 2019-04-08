@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import {
+  Tag,
   Col,
   Row,
   Spin,
@@ -15,6 +16,7 @@ import {
   Table,
   Radio,
   Modal,
+  Alert,
   Switch,
   Upload,
   Avatar,
@@ -24,6 +26,7 @@ import {
   Divider,
   Tooltip,
   Popover,
+  Timeline,
   Checkbox,
   Dropdown,
   DatePicker,
@@ -41,6 +44,7 @@ Vue.prototype.$message = message
 Vue.prototype.$notification = notification
 
 export default () => {
+  Vue.use(Tag)
   Vue.use(Col)
   Vue.use(Row)
   Vue.use(Spin)
@@ -56,6 +60,7 @@ export default () => {
   Vue.use(Table)
   Vue.use(Radio)
   Vue.use(Modal)
+  Vue.use(Alert)
   Vue.use(Switch)
   Vue.use(Upload)
   Vue.use(Avatar)
@@ -65,6 +70,7 @@ export default () => {
   Vue.use(Divider)
   Vue.use(Tooltip)
   Vue.use(Popover)
+  Vue.use(Timeline)
   Vue.use(Checkbox)
   Vue.use(Dropdown)
   Vue.use(DatePicker)

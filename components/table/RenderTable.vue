@@ -3,6 +3,11 @@ export default {
   name: 'VoTable',
 
   props: {
+    total: {
+      type: Number,
+      required: false,
+      default: 0
+    },
     scroll: {
       type: Object,
       required: false,
@@ -49,10 +54,12 @@ export default {
   data() {
     return {
       dataSource: [],
-      pagination: {},
       selectedRows: [],
       needTotalList: [],
-      selectedRowKeys: []
+      selectedRowKeys: [],
+      pagination: {
+        showTotal: total => `共 ${total} 条记录`
+      }
     }
   },
 
@@ -118,6 +125,9 @@ export default {
       {
         tag: 'component',
         attrs: props,
+        class: {
+          'auto-scroll': typeof this.scroll.x === 'boolean'
+        },
         scopedSlots: this.$scopedSlots
       },
       this.$slots.default
@@ -125,3 +135,39 @@ export default {
   }
 }
 </script>
+<style lang="less">
+.ant-table-wrapper {
+  .ant-table {
+    .ant-table-scroll {
+      .ant-table-body {
+        overflow-x: auto !important;
+      }
+    }
+  }
+
+  .ant-pagination-total-text {
+    position: absolute;
+    left: 0;
+  }
+
+  .circle-border {
+    > span {
+      border-radius: 31px;
+      width: 6px;
+      height: 6px;
+      display: inline-block;
+      margin-right: 5px;
+      position: relative;
+      top: -2px;
+    }
+  }
+}
+
+.auto-scroll {
+  .ant-table {
+    td {
+      white-space: nowrap;
+    }
+  }
+}
+</style>

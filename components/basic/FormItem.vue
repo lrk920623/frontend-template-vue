@@ -1,5 +1,7 @@
 <template>
   <a-form-item
+    :extra="extra"
+    :required="required"
     :label="label"
     :label-col="labelCol"
     :wrapper-col="wrapperCol">
@@ -12,6 +14,18 @@ export default {
   name: 'VoFormItem',
 
   props: {
+    extra: {
+      type: String,
+      required: false,
+      default: ''
+    },
+
+    required: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+
     label: {
       type: String,
       required: false,
