@@ -1,8 +1,8 @@
-import { GET_SEARCH_LIST } from '../../types/action-types'
+import { GET_SEARCH_LIST } from 'utils/types/action-types'
 import {
   SET_SEARCH_LIST,
   CHANGE_TABLE_LOADING
-} from '../../types/mutation-types'
+} from 'utils/types/mutation-types'
 
 export const state = () => ({
   searchList: []

@@ -49,7 +49,7 @@
 import { Modal } from 'ant-design-vue'
 import VoHeaderNotice from '../business/HeaderNotice'
 import { mapActions } from 'vuex'
-import { removeSession } from 'utils/storage'
+import { removeSession } from 'utils/factory/storage'
 import { user } from 'utils/constant'
 
 export default {

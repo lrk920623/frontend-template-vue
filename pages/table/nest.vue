@@ -57,9 +57,8 @@
 </template>
 
 <script>
-import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
+import { CHANGE_TABLE_LOADING } from 'utils/types/mutation-types'
 import { mapState, mapMutations } from 'vuex'
-import { mixin } from 'utils/constant'
 
 import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
@@ -76,7 +75,7 @@ export default {
     title: '嵌套表格'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

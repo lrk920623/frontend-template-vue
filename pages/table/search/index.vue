@@ -58,9 +58,9 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
-import { StoreModuleName, mixin } from 'utils/constant'
-import { GET_SEARCH_LIST } from 'types/action-types'
-import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
+import { StoreModuleName } from 'utils/constant'
+import { GET_SEARCH_LIST } from 'utils/types/action-types'
+import { CHANGE_TABLE_LOADING } from 'utils/types/mutation-types'
 
 import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
@@ -79,7 +79,7 @@ export default {
     title: '查询表格'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     const columns = [

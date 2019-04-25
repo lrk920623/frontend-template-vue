@@ -104,7 +104,11 @@
 import { types } from 'utils/constant'
 import { urls } from 'utils/api'
 import { mapState } from 'vuex'
-import { getUrlByType, buildPromise, tableWithLoading } from 'utils/common'
+import {
+  getUrlByType,
+  buildPromise,
+  tableWithLoading
+} from 'utils/factory/common'
 import VoImportOutProduct from 'components/modal/ImportOutProduct'
 
 const states = new Map([
@@ -127,15 +131,10 @@ export default {
         customRender: function(text, row) {
           const curr = states.get(row.state)
 
-          const tag = curr ? <a-tag color={curr.color}>{curr.name}</a-tag> : ''
-
           return (
-            <div>
-              <span>
-                [{row.productCode}] {text}
-              </span>
-              {tag}
-            </div>
+            <vo-single-product info={curr}>
+              [{row.productCode}] {text}
+            </vo-single-product>
           )
         }
       },
@@ -165,7 +164,7 @@ export default {
       {
         title: '理由',
         dataIndex: 'reason',
-        customRender: function(text, row) {
+        customRender: function(text) {
           return <span style="color: #f5222d;">{{ text }}</span>
         }
       },

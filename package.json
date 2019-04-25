@@ -1,11 +1,11 @@
 {
-  "name": "hs-product-eliminate",
+  "name": "frontend-template",
   "version": "1.0.0",
   "description": "frontend template project by nuxt",
   "author": "charis",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt -o",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -18,7 +18,7 @@
     "@nuxtjs/style-resources": "0.1.2",
     "ant-design-vue": "1.3.5",
     "cross-env": "^5.2.0",
-    "nuxt": "2.4.0",
+    "nuxt": "2.6.2",
     "viser-vue": "2.4.5",
     "vo-component-lib": "0.1.8"
   },

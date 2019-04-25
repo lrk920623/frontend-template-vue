@@ -56,15 +56,6 @@
           rows="4"
           placeholder="商品亏损，无法继续供货"></a-textarea>
       </vo-form-item>
-
-      <vo-form-item
-        label="联系人"
-        :required="true">
-        <a-input
-          v-decorator="valid.title.rule"
-          :name="valid.title.code"
-          placeholder="请输入"></a-input>
-      </vo-form-item>
     </a-form>
 
     <vo-class-modal
@@ -79,9 +70,12 @@
 
 <script>
 import VoFormItem from 'components/basic/FormItem'
-import { buildValidator } from 'utils/common'
 import { types } from 'utils/constant'
-import { getUrlByType, buildPromise } from 'utils/common'
+import {
+  getUrlByType,
+  buildPromise,
+  buildValidator
+} from 'utils/factory/common'
 
 const radios = [{ v: '1', n: '立即淘汰' }, { v: '2', n: '月度淘汰' }]
 const validator = {
@@ -100,7 +94,8 @@ export default {
   props: {
     open: {
       type: Boolean,
-      required: true
+      required: false,
+      default: false
     }
   },
 

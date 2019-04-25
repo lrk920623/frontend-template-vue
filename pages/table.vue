@@ -3,14 +3,12 @@
 </template>
 
 <script>
-import { mixin } from 'utils/constant'
-
 export default {
   meta: {
     title: '列表页',
     noLink: true
   },
 
-  mixins: [mixin]
+  mixins: [window.layoutMixin]
 }
 </script>

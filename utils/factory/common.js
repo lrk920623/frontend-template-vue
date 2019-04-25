@@ -1,30 +1,13 @@
-import { notification, message } from 'ant-design-vue'
-import { urls } from './api'
-import { types } from './constant'
-import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
-
 import Vue from 'vue'
+import { urls } from 'utils/api'
+import { types } from 'utils/constant'
+import { CHANGE_TABLE_LOADING } from 'utils/types/mutation-types'
 
-export const joinType = (a, b) => {
-  return `${a}/${b}`
-}
-
-export function deepClone(obj) {
-  let _obj = JSON.stringify(obj)
-  return JSON.parse(_obj)
-}
-
-export function notify(title, content) {
-  notification.open({
-    message: title,
-    description: content
-  })
-}
-
-export function inform(content) {
-  message.info(content)
-}
-
+/**
+ * 获取指定类型的模态框接口信息
+ * @param type 类型（门店，品牌等）
+ * @returns {*}
+ */
 export function getUrlByType(type) {
   switch (type) {
     case types.brand.sign:
@@ -66,6 +49,11 @@ export function getUrlByType(type) {
   }
 }
 
+/**
+ * 构建指定类型的模态框promise
+ * @param url 请求地址
+ * @returns {*}
+ */
 export function buildPromise(url) {
   function fetch(url) {
     return payload => {
@@ -84,6 +72,11 @@ export function buildPromise(url) {
   }
 }
 
+/**
+ * 构建表单校验对象
+ * @param validator
+ * @returns {*}
+ */
 export function buildValidator(validator) {
   _.forIn(validator, (val, key) => {
     val.code = key
@@ -93,6 +86,11 @@ export function buildValidator(validator) {
   return validator
 }
 
+/**
+ * 获取表单校验规则
+ * @param rule
+ * @returns {{rules: *}}
+ */
 export function getRules(rule) {
   const rules = rule.map(s => {
     return {
@@ -104,6 +102,10 @@ export function getRules(rule) {
   return { rules }
 }
 
+/**
+ * 封装表格加载的逻辑
+ * @param promise
+ */
 export async function tableWithLoading(promise) {
   const store = Vue.prototype.$nuxt.$store
 

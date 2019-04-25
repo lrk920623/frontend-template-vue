@@ -30,7 +30,6 @@
 <script>
 import VoDetailBack from 'components/business/detailBack'
 import VoPageLayout from 'components/layout/PageLayout'
-import { mixin } from 'utils/constant'
 
 const parent = {
   name: 'table-search',
@@ -55,7 +54,7 @@ export default {
     parent
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

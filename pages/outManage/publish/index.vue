@@ -67,10 +67,14 @@
 </template>
 
 <script>
-import { mixin, types } from 'utils/constant'
+import { types } from 'utils/constant'
 import { urls } from 'utils/api'
 import { mapState } from 'vuex'
-import { getUrlByType, buildPromise, tableWithLoading } from 'utils/common'
+import {
+  getUrlByType,
+  buildPromise,
+  tableWithLoading
+} from 'utils/factory/common'
 
 import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
@@ -89,7 +93,7 @@ export default {
     title: '华商月度淘汰商品公布'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     const columns = [

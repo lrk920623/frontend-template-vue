@@ -77,10 +77,14 @@
 </template>
 
 <script>
-import { mixin, types, statusColor } from 'utils/constant'
+import { types, statusColor } from 'utils/constant'
 import { urls } from 'utils/api'
 import { mapState } from 'vuex'
-import { getUrlByType, buildPromise, tableWithLoading } from 'utils/common'
+import {
+  getUrlByType,
+  buildPromise,
+  tableWithLoading
+} from 'utils/factory/common'
 
 import VoTable from 'components/table/RenderTable'
 import VoPageLayout from 'components/layout/PageLayout'
@@ -99,7 +103,7 @@ export default {
     title: '商品淘汰申请'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     const columns = [

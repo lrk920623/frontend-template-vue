@@ -7,7 +7,7 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import { CHANGE_MENU_COLLAPSED } from '../../types/mutation-types'
+import { CHANGE_MENU_COLLAPSED } from 'utils/types/mutation-types'
 export default {
   name: 'VToggleMenu',
 

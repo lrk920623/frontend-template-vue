@@ -62,7 +62,8 @@ export default {
 
     open: {
       type: Boolean,
-      required: true
+      required: false,
+      default: false
     },
 
     types: {

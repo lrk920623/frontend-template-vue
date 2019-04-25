@@ -55,9 +55,6 @@ import VoPageLayout from 'components/layout/PageLayout'
 import VoTooltip from 'components/basic/Tooltip'
 import VoPopover from 'components/basic/Popover'
 import VoSwitch from 'components/basic/Switch'
-import { notify, inform } from 'utils/common'
-
-import { mixin } from 'utils/constant'
 
 export default {
   components: {
@@ -67,7 +64,7 @@ export default {
     VoSwitch
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   meta: {
     title: '基础组件'
@@ -87,11 +84,11 @@ export default {
     },
 
     showNotify() {
-      notify('通知', '测试')
+      this.$notification('通知', '测试')
     },
 
     showMessage() {
-      inform('message')
+      this.$message('message')
     },
 
     beforeUpload(file) {

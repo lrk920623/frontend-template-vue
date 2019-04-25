@@ -23,9 +23,9 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex'
-import VoSider from '../components/layout/Sider'
-import VoLogo from '../components/business/Logo'
-import { CHANGE_MENU_COLLAPSED } from '../types/mutation-types'
+import VoSider from 'components/layout/Sider'
+import VoLogo from 'components/business/Logo'
+import { CHANGE_MENU_COLLAPSED } from 'utils/types/mutation-types'
 export default {
   components: {
     VoSider,

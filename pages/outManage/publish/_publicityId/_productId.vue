@@ -15,8 +15,6 @@ import VoDetailBack from 'components/business/detailBack'
 import VoProductOutStoreHeader from 'components/business/page/ProductOutStoreHeader'
 import VoOutOrderProductStores from 'components/tabPage/outOrder/OutOrderProductStores'
 
-import { mixin } from 'utils/constant'
-
 const parent = [
   {
     name: 'outManage-publish',
@@ -44,7 +42,7 @@ export default {
     VoOutOrderProductStores
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

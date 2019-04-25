@@ -56,15 +56,6 @@
   top: 0;
 }
 
-/* 所有组合按钮的通用布局样式 */
-.hs-button-group {
-  margin-bottom: 10px;
-
-  button:last-child {
-    margin-left: 10px;
-  }
-}
-
 /* 所有表格相关的统一样式*/
 .ant-table {
   .editable-row-operations {
@@ -78,5 +69,38 @@
       margin: 0 0 0 6px;
     }
   }
+}
 
+/* 卡片card 统一样式 */
+.ant-card.hs-inner-card {
+  margin: 0 32px 24px 32px;
+  border-radius: 8px;
+
+  .ant-card-body {
+    padding: 24px;
+  }
+}
+
+/* button 样式统一处理 */
+.ant-btn-danger {
+  color: #fff !important;
+  background-color: #ff4d4f !important;
+  border-color: #ff4d4f !important;
+}
+
+.ant-btn-danger:hover {
+  background-color: #ff706d !important;
+  border-color: #ff706d !important;
+}
+
+/* 上传 下载统一样式 */
+.single-import-module {
+  height: 135px;
+  padding-left: 100px;
+
+  .import-header {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
 }

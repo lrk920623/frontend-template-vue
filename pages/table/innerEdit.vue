@@ -157,13 +157,12 @@
 </template>
 
 <script>
-import { CHANGE_TABLE_LOADING } from 'types/mutation-types'
+import { CHANGE_TABLE_LOADING } from 'utils/types/mutation-types'
 import VoPageLayout from 'components/layout/PageLayout'
 import VoSearchReset from 'components/business/SearchReset'
 import VoTable from 'components/table/RenderTable'
 import { mapState, mapMutations } from 'vuex'
 import { Modal } from 'ant-design-vue'
-import { mixin } from 'utils/constant'
 
 export default {
   name: 'VoInnerEdit',
@@ -177,7 +176,7 @@ export default {
     title: '内联编辑'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

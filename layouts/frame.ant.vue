@@ -19,7 +19,7 @@
 
 <script>
 import zhCN from 'ant-design-vue/lib/locale-provider/zh_CN'
-import { style } from '~/utils/constant'
+import { style } from 'utils/constant'
 import VoHeader from 'components/layout/Header'
 import VoSider from 'components/layout/Sider'
 import VoLogo from 'components/business/Logo'

@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { mixin } from 'utils/constant'
-
 const data = []
 for (let i = 0; i < 12; i += 1) {
   data.push({
@@ -53,7 +51,7 @@ export default {
     title: '柱状图'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
   props: {
     title: {
       type: String,

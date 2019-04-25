@@ -31,8 +31,6 @@ import VoProductOutStoreHeader from 'components/business/page/ProductOutStoreHea
 import VoOutOrderProductStores from 'components/tabPage/outOrder/OutOrderProductStores'
 import VoOutOrderProcessHistory from 'components/tabPage/outOrder/OutOrderProcessHistory'
 
-import { mixin } from 'utils/constant'
-
 const parent = [
   {
     name: 'outManage-apply',
@@ -61,7 +59,7 @@ export default {
     VoOutOrderProcessHistory
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

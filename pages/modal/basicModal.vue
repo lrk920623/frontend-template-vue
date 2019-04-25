@@ -108,8 +108,8 @@
 <script>
 import VoPageLayout from 'components/layout/PageLayout'
 
-import { mixin, types } from 'utils/constant'
-import { getUrlByType, buildPromise } from 'utils/common'
+import { types } from 'utils/constant'
+import { getUrlByType, buildPromise } from 'utils/factory/common'
 
 export default {
   components: {
@@ -120,7 +120,7 @@ export default {
     title: '基础表单'
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

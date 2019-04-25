@@ -1,6 +1,6 @@
 <template>
   <a-menu
-    :default-selected-keys="[activeMenu]"
+    :selected-keys="[activeMenu]"
     :inline-collapsed="collapsed"
     :open-keys="openKeys"
     :mode="mode"
@@ -35,8 +35,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
   name: 'VoMenu',
 
@@ -62,12 +60,9 @@ export default {
   data: function() {
     return {
       openKeys: [],
-      cachedOpenKeys: []
+      cachedOpenKeys: [],
+      activeMenu: ''
     }
-  },
-
-  computed: {
-    ...mapState(['activeMenu'])
   },
 
   watch: {
@@ -76,25 +71,32 @@ export default {
         this.cachedOpenKeys = this.openKeys.concat()
         this.openKeys = []
       } else this.openKeys = this.cachedOpenKeys
-    }
-  },
+    },
 
-  mounted: function() {
-    this.$watch(
-      'activeMenu',
-      val => {
-        const activeMenuParent = []
+    $route: {
+      handler: function(val) {
+        const activeMenuParent = [],
+          currentRoute = val.name
+
         this.menus.forEach(s => {
-          if (s.route === val || !s.child) return
+          if (!s.child) {
+            if (currentRoute.includes(s.route)) this.activeMenu = s.route
 
-          const active = s.child.find(c => val.includes(c.route))
-          if (active) activeMenuParent.push(s.route)
+            return
+          }
+
+          const active = s.child.find(c => currentRoute.includes(c.route))
+          if (active) {
+            activeMenuParent.push(s.route)
+            this.activeMenu = active.route
+          }
         })
 
         this.openKeys = activeMenuParent
       },
-      { immediate: true }
-    )
+
+      immediate: true
+    }
   },
 
   methods: {

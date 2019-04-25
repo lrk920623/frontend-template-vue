@@ -79,7 +79,6 @@ import VoDetailBack from 'components/business/detailBack'
 import VoPageDetailHeader from 'components/business/PageDetailHeader'
 import VoOutOrderProducts from 'components/tabPage/outOrder/OutOrderProducts'
 import VoOutOrderProcessHistory from 'components/tabPage/outOrder/OutOrderProcessHistory'
-import { mixin } from 'utils/constant'
 import { urls } from 'utils/api'
 
 const parent = {
@@ -102,7 +101,7 @@ export default {
     VoOutOrderProcessHistory
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     return {

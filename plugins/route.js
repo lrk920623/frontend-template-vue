@@ -1,4 +1,4 @@
-import { getSession } from 'utils/storage'
+import { getSession } from 'utils/factory/storage'
 import { user } from 'utils/constant'
 
 export default ({ app }) => {

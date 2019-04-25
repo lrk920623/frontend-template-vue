@@ -4,7 +4,7 @@
     :class-name="'hs-import-out-product alert-special-modal'"
     :open="open"
     :footer="null"
-    title="导入淘汰商品门店"
+    :title="title"
     @close="$emit('close')">
     <a-alert
       message="请导入符合同一单据要求（品类组、执行方式、淘汰时间、淘汰理由）的商品"
@@ -37,6 +37,7 @@
 </template>
 
 <script>
+import VoImportProductOnly from 'components/stepPage/importOutProduct/OnlyProductStep1'
 import VoImportProductUpload from 'components/stepPage/importOutProduct/Step1'
 import VoImportProductProcess from 'components/stepPage/importOutProduct/Step2'
 import VoImportProductResult from 'components/stepPage/importOutProduct/Step3'
@@ -46,13 +47,27 @@ export default {
   components: {
     VoImportProductUpload,
     VoImportProductProcess,
-    VoImportProductResult
+    VoImportProductResult,
+    VoImportProductOnly
   },
 
   props: {
     open: {
       type: Boolean,
-      required: true
+      required: false,
+      default: false
+    },
+
+    onlyProduct: {
+      type: Boolean,
+      required: false,
+      default: false
+    },
+
+    title: {
+      type: String,
+      required: false,
+      default: '导入淘汰商品门店'
     }
   },
 
@@ -67,7 +82,9 @@ export default {
     currentComponent() {
       switch (this.currentStep) {
         case 0:
-          return 'VoImportProductUpload'
+          return this.onlyProduct
+            ? 'VoImportProductOnly'
+            : 'VoImportProductUpload'
         case 1:
           return 'VoImportProductProcess'
         case 2:

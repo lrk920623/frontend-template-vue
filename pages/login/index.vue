@@ -82,9 +82,8 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { timeFix } from 'utils/util'
-import { setSession } from 'utils/storage'
+import { timeFix } from 'utils/factory/util'
+import { setSession } from 'utils/factory/storage'
 import { user } from 'utils/constant'
 
 export default {

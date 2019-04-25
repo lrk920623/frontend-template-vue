@@ -67,8 +67,7 @@
 import VoPageLayout from 'components/layout/PageLayout'
 import VoFormItem from 'components/basic/FormItem'
 
-import { buildValidator } from 'utils/common'
-import { mixin } from 'utils/constant'
+import { buildValidator } from 'utils/factory/common'
 
 const validator = {
   title: { rule: [['required', '请输入标题']] },
@@ -83,7 +82,7 @@ export default {
     VoFormItem
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   meta: {
     title: '基础表单'

@@ -26,7 +26,7 @@
 import Step1 from 'components/tabPage/Step1'
 import Step2 from 'components/tabPage/Step2'
 import VoPageLayout from 'components/layout/PageLayout'
-import { successModal } from 'utils/modal'
+import { successModal } from 'utils/factory/modal'
 
 export default {
   components: {

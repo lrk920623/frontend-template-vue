@@ -48,7 +48,11 @@
 import { types } from 'utils/constant'
 import { urls } from 'utils/api'
 import { mapState } from 'vuex'
-import { getUrlByType, buildPromise, tableWithLoading } from 'utils/common'
+import {
+  getUrlByType,
+  buildPromise,
+  tableWithLoading
+} from 'utils/factory/common'
 
 export default {
   name: 'VoOutOrderProducts',

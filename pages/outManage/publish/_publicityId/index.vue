@@ -77,7 +77,6 @@
 <script>
 import VoDetailBack from 'components/business/detailBack'
 import VoPageDetailHeader from 'components/business/PageDetailHeader'
-import { mixin } from 'utils/constant'
 import { urls } from 'utils/api'
 import { mapState } from 'vuex'
 
@@ -99,7 +98,7 @@ export default {
     VoPageDetailHeader
   },
 
-  mixins: [mixin],
+  mixins: [window.layoutMixin],
 
   data() {
     const columns = [

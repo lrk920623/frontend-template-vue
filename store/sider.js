@@ -1,5 +1,5 @@
-import { GET_MENU_LIST } from '~/types/action-types'
-import { SET_MENU_LIST, CHANGE_ACTIVE_MENU } from '~/types/mutation-types'
+import { GET_MENU_LIST } from 'utils/types/action-types'
+import { SET_MENU_LIST } from 'utils/types/mutation-types'
 
 export const state = () => ({
   activeMenu: '',
@@ -7,10 +7,6 @@ export const state = () => ({
 })
 
 export const mutations = {
-  [CHANGE_ACTIVE_MENU](state, menu) {
-    state.activeMenu = menu
-  },
-
   [SET_MENU_LIST](state, list) {
     state.menuList = list
   }

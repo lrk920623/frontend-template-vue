@@ -168,6 +168,10 @@ export default {
     td {
       white-space: nowrap;
     }
+
+    .ant-table-thead > tr > th {
+      white-space: nowrap;
+    }
   }
 }
 </style>

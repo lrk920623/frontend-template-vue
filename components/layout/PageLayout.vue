@@ -86,10 +86,6 @@ export default {
       .vo-search-box {
         margin: 0 32px;
         padding: 0;
-
-        > .ant-row {
-          margin-bottom: 24px;
-        }
       }
     }
   }

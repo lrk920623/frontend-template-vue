@@ -177,17 +177,6 @@ export default {
     .upload-import-content {
       flex: 1;
       margin-top: 20px;
-
-      .single-import-module {
-        height: 135px;
-        padding-left: 60px;
-
-        .import-header {
-          font-size: 16px;
-          font-weight: bold;
-          margin-bottom: 15px;
-        }
-      }
     }
   }
 }

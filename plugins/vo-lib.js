@@ -18,6 +18,8 @@ import SearchReset from 'components/business/SearchReset'
 import Table from 'components/table/RenderTable'
 import PageLayout from 'components/layout/PageLayout'
 import PageHeader from 'components/layout/PageHeader'
+import ButtonGroup from 'components/basic/ButtonGroup'
+import SingleProduct from 'components/business/SingleProduct'
 
 Vue.component(Col.name, Col)
 Vue.component(Input.name, Input)
@@ -37,3 +39,5 @@ Vue.component(SearchReset.name, SearchReset)
 Vue.component(Table.name, Table)
 Vue.component(PageLayout.name, PageLayout)
 Vue.component(PageHeader.name, PageHeader)
+Vue.component(ButtonGroup.name, ButtonGroup)
+Vue.component(SingleProduct.name, SingleProduct)
